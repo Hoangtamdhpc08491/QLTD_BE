@@ -1,41 +1,60 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database');
 
-// Ví dụ model User
 const User = sequelize.define('User', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
-    autoIncrement: true
+    autoIncrement: true,
+    field: 'UserId'
+  },
+  username: {
+    type: DataTypes.STRING(50),
+    allowNull: false,
+    unique: true,
+    field: 'user_name',
+    validate: {
+      notEmpty: { msg: 'Vui lòng nhập tên đăng nhập' },
+      len: { args: [5, 50], msg: 'Tên đăng nhập phải từ 5 đến 50 ký tự' }
+    }
+  },
+  password: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: { msg: 'Vui lòng nhập mật khẩu' }
+    }
   },
   name: {
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
-      notEmpty: true,
-      len: [2, 100]
+      notEmpty: { msg: 'Vui lòng nhập tên' }
     }
   },
   email: {
-    type: DataTypes.STRING,
+    type: DataTypes.STRING(100),
     allowNull: false,
-    unique: true,
     validate: {
-      isEmail: true
+      isEmail: { msg: 'Email không hợp lệ' },
+      len: { args: [5, 100], msg: 'Email phải từ 5 đến 100 ký tự' }
     }
   },
   phone: {
-    type: DataTypes.STRING,
-    allowNull: true
+    type: DataTypes.STRING(11),
+    allowNull: false,
+    field: 'PhoneNumber',
+    validate: {
+      len: { args: [10, 11], msg: 'Số điện thoại phải từ 10 đến 11 số' }
+    }
   },
-  createdAt: {
-    type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW
+  creditRating: {
+    type: DataTypes.ENUM,
+    values: ['excellent', 'good', 'average', 'poor', 'unknown'],
+    allowNull: true,
+    field: 'CreditRating',
+   
   },
-  updatedAt: {
-    type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW
-  }
 }, {
   tableName: 'users',
   timestamps: true
