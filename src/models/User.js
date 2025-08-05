@@ -52,9 +52,18 @@ const User = sequelize.define('User', {
     type: DataTypes.ENUM,
     values: ['excellent', 'good', 'average', 'poor', 'unknown'],
     allowNull: true,
+    defaultValue: 'unknown',
     field: 'CreditRating',
    
   },
+  role: {
+    type: DataTypes.ENUM,
+    values: ['admin', 'user'],
+    allowNull: false,
+    defaultValue: 'user',
+    field: 'Role'
+  }
+  
 }, {
   tableName: 'users',
   timestamps: true
