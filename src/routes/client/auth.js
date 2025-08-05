@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const AuthController = require('../controllers/AuthController');
-const { authenticateJWT } = require('../middleware/auth');
+const AuthController = require('../../controllers/user/AuthController');
+const { authenticateJWT } = require('../../middleware/auth');
 
 // POST /api/auth/register - Đăng ký
 router.post('/register', AuthController.register);

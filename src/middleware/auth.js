@@ -60,33 +60,34 @@ const authenticateJWT = async (req, res, next) => {
   }
 };
 
-// Middleware kiểm tra token tùy chọn (không bắt buộc)
-const optionalJWT = async (req, res, next) => {
-  try {
-    const authHeader = req.headers.authorization;
-
-    if (authHeader && authHeader.startsWith('Bearer ')) {
-      const token = authHeader.split(' ')[1];
-      const decoded = jwt.verify(token, JWT_SECRET);
-      
-      const user = await User.findByPk(decoded.id);
-      if (user) {
-        req.user = {
-          id: decoded.id,
-          username: decoded.username
-        };
+// Middleware kiểm tra quyền admin
+const requireAdmin = (req, res, next) => {
+  if (req.user && req.user.id) {
+    // Lấy user từ DB để kiểm tra role
+    User.findByPk(req.user.id).then(user => {
+      if (user && user.role === 'admin') {
+        next();
+      } else {
+        res.status(403).json({
+          success: false,
+          message: 'Bạn không có quyền truy cập chức năng này'
+        });
       }
-    }
-
-    next();
-
-  } catch (error) {
-    // Nếu có lỗi, vẫn cho tiếp tục (vì là optional)
-    next();
+    }).catch(() => {
+      res.status(500).json({
+        success: false,
+        message: 'Lỗi xác thực quyền admin'
+      });
+    });
+  } else {
+    res.status(401).json({
+      success: false,
+      message: 'Chưa xác thực'
+    });
   }
 };
 
 module.exports = {
   authenticateJWT,
-  optionalJWT
+  requireAdmin
 };

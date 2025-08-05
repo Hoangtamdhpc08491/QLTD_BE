@@ -6,11 +6,8 @@ var logger = require('morgan');
 // Import database configuration
 const { testConnection } = require('./config/database');
 const { syncDatabase } = require('./models');
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var authRouter = require('./routes/auth');
-
+const clientRoutes = require('./routes/client');
+const adminRoutes = require('./routes/admin');
 var app = express();
 
 // Test database connection and sync when app starts
@@ -25,8 +22,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/api/auth', authRouter);
-
+app.use('/api',clientRoutes);
+app.use('/api/admin', adminRoutes);
 module.exports = app;

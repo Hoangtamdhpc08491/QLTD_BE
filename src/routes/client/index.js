@@ -6,8 +6,7 @@ router.get('/', function(req, res) {
   res.json({ title: 'Express' });
 });
 // Import user routes
-const userRoutes = require('./users');
-// Use user routes
-router.use('/users', userRoutes);
 
+const authRoutes = require('./auth');
+router.use('/auth', authRoutes);
 module.exports = router;
