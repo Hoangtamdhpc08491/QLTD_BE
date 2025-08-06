@@ -7,6 +7,6 @@ router.get('/', function(req, res) {
 });
 // Import user routes
 
-const authRoutes = require('./auth');
+const authRoutes = require('./auth.route');
 router.use('/auth', authRoutes);
 module.exports = router;

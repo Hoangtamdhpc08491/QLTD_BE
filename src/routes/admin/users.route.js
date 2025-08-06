@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const UserController = require('../../controllers/admin/UserController');
+const UserController = require('../../controllers/admin/user-controller');
 const { authenticateJWT, requireAdmin } = require('../../middleware/auth');
 
 // GET /users - Lấy tất cả users (cần token)

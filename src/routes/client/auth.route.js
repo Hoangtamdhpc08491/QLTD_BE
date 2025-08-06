@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const AuthController = require('../../controllers/user/AuthController');
+const AuthController = require('../../controllers/user/auth-controller');
 const { authenticateJWT } = require('../../middleware/auth');
 
 // POST /api/auth/register - Đăng ký

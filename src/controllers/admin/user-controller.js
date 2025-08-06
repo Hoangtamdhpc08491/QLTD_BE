@@ -1,4 +1,4 @@
-const UserService = require('../../services/UserService');
+const UserService = require('../../services/user-service');
 
 class UserController {
   // GET /users - Lấy tất cả users
