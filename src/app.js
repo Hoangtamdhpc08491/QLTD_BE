@@ -17,7 +17,7 @@ var app = express();
   await syncDatabase();
 })();
 app.use(cors({
-  origin: 'localhost:4200', // Cho phép origin từ Angular
+  origin: 'http://localhost:4200', // Cho phép origin từ Angular
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Các phương thức HTTP được phép
   credentials: true, // Cho phép cookie và thông tin xác thực khác
 }));

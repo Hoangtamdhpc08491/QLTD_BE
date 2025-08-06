@@ -5,8 +5,15 @@ var router = express.Router();
 router.get('/', function(req, res) {
   res.json({ title: 'Express' });
 });
-// Import user routes
 
+// Import routes
 const authRoutes = require('./auth.route');
+const loanPackageRoutes = require('./loan-package.route');
+const categoryRoutes = require('./category.route');
+
+// Use routes
 router.use('/auth', authRoutes);
+router.use('/loan-packages', loanPackageRoutes);
+router.use('/categories', categoryRoutes);
+
 module.exports = router;
