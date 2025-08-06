@@ -8,6 +8,7 @@ const { testConnection } = require('./config/database');
 const { syncDatabase } = require('./models');
 const clientRoutes = require('./routes/client');
 const adminRoutes = require('./routes/admin');
+const cors = require('cors');
 var app = express();
 
 // Test database connection and sync when app starts
@@ -15,13 +16,17 @@ var app = express();
   await testConnection();
   await syncDatabase();
 })();
-
+app.use(cors({
+  origin: 'localhost:4200', // Cho phép origin từ Angular
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Các phương thức HTTP được phép
+  credentials: true, // Cho phép cookie và thông tin xác thực khác
+}));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api',clientRoutes);
+app.use('/api/client',clientRoutes);
 app.use('/api/admin', adminRoutes);
 module.exports = app;
