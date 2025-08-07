@@ -10,6 +10,7 @@ router.get('/', function(req, res) {
 const userRoutes = require('../admin/users.route');
 const categoryRoutes = require('../admin/category.route');
 const loanPackageRoutes = require('../admin/loan-package.route');
+const loanContractRoutes = require('../admin/loan-contract.route');
 const newsRoutes = require('../admin/news.route');
 const newsCategoryRoutes = require('../admin/news-category.route');
 
@@ -17,6 +18,7 @@ const newsCategoryRoutes = require('../admin/news-category.route');
 router.use('/users', userRoutes);
 router.use('/categories', categoryRoutes);
 router.use('/loan-packages', loanPackageRoutes);
+router.use('/loan-contracts', loanContractRoutes);
 router.use('/news', newsRoutes);
 router.use('/news-categories', newsCategoryRoutes);
 
