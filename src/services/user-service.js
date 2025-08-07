@@ -1,4 +1,8 @@
 const { User } = require('../models');
+const bcrypt = require('bcryptjs');
+
+
+
 
 class UserService {
   // Lấy tất cả users
@@ -26,10 +30,12 @@ class UserService {
     }
   }
 
+  
   // Tạo user mới
   static async createUser(userData) {
     try {
-      const user = await User.create(userData);
+      const hashedPassword = await bcrypt.hash(userData.password, 10);
+      const user = await User.create({ ...userData, password: hashedPassword });
       return user;
     } catch (error) {
       throw new Error('Lỗi khi tạo user: ' + error.message);
