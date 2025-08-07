@@ -68,12 +68,12 @@ const News = sequelize.define('News', {
   },
   createAt: {
     type: DataTypes.DATE,
-    allowNull: false,
+    allowNull: true,
     field: 'createdAt'
   },
   updateAt: {
     type: DataTypes.DATE,
-    allowNull: false,
+    allowNull: true,
     field: 'updatedAt'
   }
 

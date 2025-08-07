@@ -119,6 +119,8 @@ class NewsService {
       categoryId,
       timeUpload,
       timeActive,
+      createdAt = new Date(),
+      updatedAt = new Date(),
       hide = false
     } = newsData;
 
@@ -142,6 +144,8 @@ class NewsService {
       categoryId: categoryId || null,
       timeUpload: timeUpload || new Date(),
       timeActive: timeActive || new Date(),
+      createdAt: createdAt || new Date(),
+      updatedAt: updatedAt || new Date(),
       hide,
       uploadBy,
       deleteFlag: false

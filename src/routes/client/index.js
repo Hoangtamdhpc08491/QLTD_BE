@@ -11,11 +11,13 @@ const authRoutes = require('./auth.route');
 const loanPackageRoutes = require('./loan-package.route');
 const categoryRoutes = require('./category.route');
 const newsRoutes = require('./news.route');
+const newsCategoryRoutes = require('./news-category.route');
 
 // Use routes
 router.use('/auth', authRoutes);
 router.use('/loan-packages', loanPackageRoutes);
 router.use('/categories', categoryRoutes);
 router.use('/news', newsRoutes);
+router.use('/news-categories', newsCategoryRoutes);
 
 module.exports = router;
