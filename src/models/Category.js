@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database');
+const { create } = require('domain');
 
 const Category = sequelize.define('Category', {
   id: {
@@ -15,6 +16,16 @@ const Category = sequelize.define('Category', {
   description: {
     type: DataTypes.TEXT,
     allowNull: true
+  },
+  createdAt: {
+    type: DataTypes.DATE,
+    allowNull: false,
+    field: 'createdAt'
+  },
+  updatedAt: {
+    type: DataTypes.DATE,
+    allowNull: false,
+    field: 'updatedAt'
   }
 }, {
   tableName: 'category',

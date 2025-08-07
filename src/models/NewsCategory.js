@@ -15,7 +15,18 @@ const NewsCategory = sequelize.define('NewsCategory', {
   description: {
     type: DataTypes.TEXT,
     allowNull: true
+  },
+  createdAt: {
+    type: DataTypes.DATE,
+    allowNull: false,
+    field: 'createdAt'
+  },
+  updatedAt: {
+    type: DataTypes.DATE,
+    allowNull: false,
+    field: 'updatedAt'
   }
+
 }, {
   tableName: 'news_category',
   timestamps: true

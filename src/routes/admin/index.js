@@ -10,10 +10,14 @@ router.get('/', function(req, res) {
 const userRoutes = require('../admin/users.route');
 const categoryRoutes = require('../admin/category.route');
 const loanPackageRoutes = require('../admin/loan-package.route');
+const newsRoutes = require('../admin/news.route');
+const newsCategoryRoutes = require('../admin/news-category.route');
 
 // Use routes
 router.use('/users', userRoutes);
 router.use('/categories', categoryRoutes);
 router.use('/loan-packages', loanPackageRoutes);
+router.use('/news', newsRoutes);
+router.use('/news-categories', newsCategoryRoutes);
 
 module.exports = router;

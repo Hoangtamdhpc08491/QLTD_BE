@@ -66,6 +66,16 @@ const News = sequelize.define('News', {
     allowNull: true,    
     defaultValue: false
   },
+  createAt: {
+    type: DataTypes.DATE,
+    allowNull: false,
+    field: 'createdAt'
+  },
+  updateAt: {
+    type: DataTypes.DATE,
+    allowNull: false,
+    field: 'updatedAt'
+  }
 
 }, {
   tableName: 'news',

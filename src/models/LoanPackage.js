@@ -75,6 +75,16 @@ const LoanPackage = sequelize.define('LoanPackage', {
       model: 'category',
       key: 'CategoryId'
     }
+  },
+  createdAt: {
+    type: DataTypes.DATE,
+    allowNull: false,
+    field: 'createdAt'
+  },
+  updatedAt: {
+    type: DataTypes.DATE,
+    allowNull: false,
+    field: 'updatedAt'
   }
 }, {
   tableName: 'loan_package',
