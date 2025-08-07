@@ -149,7 +149,7 @@ class LoanPackageService {
           as: 'category',
           attributes: ['id', 'name']
         }],
-        attributes: ['id', 'name', 'baseInterestRate', 'interestRate2', 'interestRate3', 'description1', 'description2', 'description3', 'description4', 'description5', 'description6', 'image', 'categoryId'],
+        attributes: ['id', 'name', 'maxAmount', 'baseInterestRate', 'interestRate2', 'interestRate3', 'description1', 'description2', 'description3', 'description4', 'description5', 'description6', 'image', 'categoryId'],
         order: [['id', 'ASC']]
       });
       return loanPackages;

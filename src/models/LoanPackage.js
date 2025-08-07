@@ -76,6 +76,11 @@ const LoanPackage = sequelize.define('LoanPackage', {
       key: 'CategoryId'
     }
   },
+  maxAmount: {
+    type: DataTypes.FLOAT,
+    allowNull: true,
+    field: 'MaxAmount'
+  },
   createdAt: {
     type: DataTypes.DATE,
     allowNull: false,
