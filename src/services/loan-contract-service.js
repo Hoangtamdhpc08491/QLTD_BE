@@ -59,7 +59,7 @@ class LoanContractService {
         interestRate,
         interestAmount,
         totalAmount,
-        emi,
+        EMI: emi, // Use EMI field name to match the model
         status: 'pending'
       });
 
@@ -230,7 +230,7 @@ class LoanContractService {
         contractData.interestRate = interestRate;
         contractData.interestAmount = interestAmount;
         contractData.totalAmount = totalAmount;
-        contractData.emi = emi;
+        contractData.EMI = emi; // Use EMI field name to match the model
       }
 
       await contract.update(contractData);
