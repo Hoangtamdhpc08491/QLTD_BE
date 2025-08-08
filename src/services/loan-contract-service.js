@@ -146,7 +146,7 @@ class LoanContractService {
           {
             model: LoanPackage,
             as: 'loanPackage',
-            attributes: ['id', 'name', 'baseInterestRate', 'interestRate2', 'interestRate3', 'maxAmount']
+            attributes: ['id', 'name', 'baseInterestRate', 'interestRate2', 'interestRate3', 'maxAmount', 'description1', 'description2', 'description3', 'description4', 'description5', 'description6', 'image']
           },
           {
             model: User,
